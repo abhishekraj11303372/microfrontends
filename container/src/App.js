@@ -1,11 +1,11 @@
 import React from 'react'
-import {mount} from 'marketing/MarketingApp'
-
-console.log(mount)
+import MarketingApp from './components/MarketingApp'
 
 function App() {
   return (
-    <div>App</div>
+    <div>hi <hr/>
+      <MarketingApp />
+    </div>
   )
 }
 
