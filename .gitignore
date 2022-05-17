@@ -4,3 +4,5 @@ dashboard/node_modules
 marketing/node_modules
 
 
+container/dist
+marketing/dist
