@@ -3,7 +3,7 @@ import MarketingApp from './components/MarketingApp'
 
 function App() {
   return (
-    <div>hi <hr/>
+    <div>hi  there! <hr/>
       <MarketingApp />
     </div>
   )
