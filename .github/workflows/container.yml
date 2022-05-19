@@ -37,7 +37,7 @@ on: push
 
 defaults:
   run:
-    working-directory: microfrontends/container
+    working-directory: container
 
 jobs:
   build:
