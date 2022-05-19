@@ -28,12 +28,12 @@
 
 name: deploy-container
 
-on: push
-  # push:
-  #   branches:
-  #     - master 
-  #   paths:
-  #     - 'microfrontends/container/**'
+on:
+  push:
+    branches:
+      - master 
+    paths:
+      - 'container/**'
 
 defaults:
   run:
