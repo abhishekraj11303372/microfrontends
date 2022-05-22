@@ -6,11 +6,14 @@ const commonConfig = require('./webpack.common');
 
 const devConfig = {
     mode: 'development',
+    output: {
+        publicPath: 'http://localhost:8084/',
+    },
     devServer: {
         port: 8084,
         historyApiFallback: {
-            index: 'index.html'
-        }
+            index: 'index.html',
+        },
     },
     plugins: [
         new ModuleFederationPlugin({
@@ -23,9 +26,9 @@ const devConfig = {
             // shared: ['react','react-dom'],  
         }),
         new HtmlWebpackPlugin({
-            template: './public/index.html'
+            template: './public/index.html',
         })
     ]
 };
 
-module.exports = merge(commonConfig,devConfig);
+module.exports = merge(commonConfig, devConfig);
