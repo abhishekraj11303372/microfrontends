@@ -7,28 +7,31 @@ const commonConfig = require('./webpack.common');
 const devConfig = {
     mode: 'development',
     output: {
-        publicPath: 'http://localhost:8084/',
+        publicPath: 'http://localhost:8085/'
     },
     devServer: {
-        port: 8084,
+        port: 8085,
         historyApiFallback: {
-            index: 'index.html',
+            index: 'index.html'
         },
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'auth',
+            name: 'dashboard',
             filename: 'remoteEntry.js',
             exposes: {
-                './AuthApp': './src/bootstrap',
+                './DashboardApp': './src/bootstrap',
             },
             shared: packageJson.dependencies,  
             // shared: ['react','react-dom'],  
         }),
         new HtmlWebpackPlugin({
-            template: './public/index.html',
-        })
-    ]
+            template: './public/index.html'
+        }),
+    ],
 };
 
-module.exports = merge(commonConfig, devConfig);
+module.exports = merge(commonConfig,devConfig);
