@@ -10,7 +10,7 @@ if(process.env.NODE_ENV === 'development') {
     const devRoot = document.querySelector('.dashboard-dev-root');
 
     if(devRoot) {
-        mount(devRoot, {defaultHistory: createBrowserHistory});
+        mount(devRoot);
     }
 }
 
