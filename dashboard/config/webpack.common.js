@@ -11,7 +11,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(png|jpe?g|gif|woff|eot|tff)$/i,
+                test: /\.(woff(2)?|png|jpe?g|gif|woff|eot||ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [
                     {loader: 'file-loader'}
                 ]
