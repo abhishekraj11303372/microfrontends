@@ -1,4 +1,4 @@
-const { VueLoaderPugin } = require('vue-loader');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
     entry: './src/index.js',
@@ -37,5 +37,5 @@ module.exports = {
             },
         ],
     },
-    plugins: [new VueLoaderPugin()],
+    plugins: [new VueLoaderPlugin()],
 };
