@@ -3,7 +3,8 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 
 import Progress from './components/Progress'
 import Header from './components/Header'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 
 const MarketingAppLazy = lazy(() => import('./components/MarketingApp') )
 const AuthAppLazy = lazy(() => import('./components/AuthApp') )
@@ -13,10 +14,19 @@ const generateClassName = createGenerateClassName({
   productionPrefix: 'co',
 });
 
+const history = createBrowserHistory();
+
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
+
+  useEffect(() => {
+    if(isSignedIn) {
+      history.push('dashboard');
+    }
+  },[isSignedIn]);
+
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <StylesProvider generateClassName={generateClassName}>
       <div>
         <Header onSignOut={() => setIsSignedIn(false)} isSignedIn={isSignedIn}/>
@@ -25,13 +35,16 @@ function App() {
             <Route path="/auth">
               <AuthAppLazy onSignIn={() => setIsSignedIn(true)} />
             </Route>
-            <Route path="/dashboard" component={DashboardAppLazy} />
+            <Route path="/dashboard">
+              {!isSignedIn && <Redirect to="/" />}
+              <DashboardAppLazy />
+            </Route>
             <Route path="/" component={MarketingAppLazy} />
           </Suspense>
         </Switch>
       </div>
       </StylesProvider>
-    </BrowserRouter>
+    </Router>
   );
 };
 
