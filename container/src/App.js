@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles'
 import MarketingApp from './components/MarketingApp'
 import Header from './components/Header'
@@ -10,6 +10,7 @@ const generateClassName = createGenerateClassName({
 });
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
   return (
     <BrowserRouter>
       <StylesProvider generateClassName={generateClassName}>
