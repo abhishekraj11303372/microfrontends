@@ -6,7 +6,7 @@ export default() => {
     const ref = useRef(null);
     const history = useHistory();
 
-    useEffect(() => {
+    useEffect((onSignIn) => {
         const {onParentNavigate} = mount(ref.current,{
             intialPath: history.location.pathname,
             onNavigate: ({pathName: nextPathName}) => {
@@ -16,6 +16,7 @@ export default() => {
                     history.push(nextPathName);
                 }
             },
+            onSignIn,
         });
 
         history.listen(onParentNavigate);
